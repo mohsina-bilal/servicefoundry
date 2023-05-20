@@ -1,4 +1,16 @@
-image=Build(
+import argparse
+import logging
+from servicefoundry import Build, PythonBuild, Service, Resources, Port
+
+logging.basicConfig(level=logging.INFO)
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--workspace_fqn", required=True, type=str)
+args = parser.parse_args()
+
+service = Service(
+    name="fastapi",
+    image=Build(
         build_spec=PythonBuild(
             command="uvicorn app:app --port 8000 --host localhost",
             requirements_path="requirements.txt",
