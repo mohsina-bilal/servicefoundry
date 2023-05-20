@@ -1,13 +1,13 @@
 image=Build(
         build_spec=PythonBuild(
-            command="uvicorn app:app --port 8000 --host 0.0.0.0",
+            command="uvicorn app:app --port 8000 --host localhost",
             requirements_path="requirements.txt",
         )
     ),
     ports=[
         Port(
             port=8000,
-            host="<Provide a host value based on your configured domain>"
+            host="localhost"
         )
     ],
     resources=Resources(
